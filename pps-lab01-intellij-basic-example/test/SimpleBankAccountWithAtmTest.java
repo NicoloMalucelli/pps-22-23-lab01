@@ -22,7 +22,11 @@ public class SimpleBankAccountWithAtmTest {
         assertEquals(0, bankAccount.getBalance());
     }
 
-
+    @Test
+    void testDeposit() {
+        bankAccount.deposit(accountHolder.getId(), 100);
+        assertEquals(99, bankAccount.getBalance());
+    }
 
 
 
