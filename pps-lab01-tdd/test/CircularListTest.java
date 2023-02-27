@@ -25,4 +25,9 @@ public class CircularListTest {
         assertEquals(0, this.list.size());
     }
 
+    @Test
+    void testAddElement(){
+        this.list.add(0);
+        assertEquals(1, this.list.size());
+    }
 }
