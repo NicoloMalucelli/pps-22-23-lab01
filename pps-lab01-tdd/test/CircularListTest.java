@@ -67,4 +67,16 @@ public class CircularListTest {
         this.list.next().get();
         assertEquals(this.list.next().get(), 0);
     }
+
+    @Test
+    void testPreviousWithEmptyList(){
+        assertTrue(this.list.previous().isEmpty());
+    }
+
+    @Test
+    void testListCircularityWithPrevious(){
+        this.list.add(0);
+        this.list.add(1);
+        assertEquals(this.list.previous().get(), 1);
+    }
 }

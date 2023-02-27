@@ -28,15 +28,23 @@ public class CircularListImpl implements CircularList{
         if(this.list.isEmpty()){
             return Optional.empty();
         }
-        if(i == list.size()){
+        i++;
+        if(i >= list.size()){
             i = 0;
         }
-        return Optional.of(list.get(i++));
+        return Optional.of(list.get(i));
     }
 
     @Override
     public Optional<Integer> previous() {
-        return Optional.empty();
+        if(this.list.isEmpty()){
+            return Optional.empty();
+        }
+        i--;
+        if(i <= 0){
+            i = list.size()-1;
+        }
+        return Optional.of(list.get(i));
     }
 
     @Override
