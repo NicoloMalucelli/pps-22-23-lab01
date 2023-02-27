@@ -26,8 +26,16 @@ public class CircularListTest {
     }
 
     @Test
-    void testAddElement(){
+    void testAddOneElement(){
         this.list.add(0);
         assertEquals(1, this.list.size());
+    }
+
+    @Test
+    void testMultipleAdds(){
+        this.list.add(0);
+        this.list.add(1);
+        this.list.add(2);
+        assertEquals(3, this.list.size());
     }
 }
