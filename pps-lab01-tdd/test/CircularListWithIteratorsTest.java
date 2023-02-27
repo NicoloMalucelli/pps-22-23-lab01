@@ -24,6 +24,11 @@ public class CircularListWithIteratorsTest {
     }
 
     @Test
+    void sizeZeroAtStart(){
+        assertEquals(this.list.size(), 0);
+    }
+
+    @Test
     void testAdd(){
 
     }
