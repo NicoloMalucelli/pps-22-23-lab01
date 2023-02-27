@@ -19,19 +19,27 @@ public class CircularListWithIteratorsTest {
     }
 
     @Test
-    void emptyAtStart(){
+    void testIsEmptyAtStart(){
         assertTrue(this.list.isEmpty());
     }
 
     @Test
-    void sizeZeroAtStart(){
+    void testSizeZeroAtStart(){
         assertEquals(this.list.size(), 0);
     }
 
     @Test
-    void notEmptyAfterAdd(){
+    void testNotEmptyAfterAdd(){
         this.list.add(0);
         assertFalse(this.list.isEmpty());
+    }
+
+    @Test
+    void testMultipleAdds(){
+        this.list.add(0);
+        this.list.add(1);
+        this.list.add(2);
+        assertEquals(this.list.size(), 3);
     }
 
 
