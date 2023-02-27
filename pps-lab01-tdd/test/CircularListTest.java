@@ -60,4 +60,11 @@ public class CircularListTest {
         this.list.add(0);
         assertEquals(this.list.next().get(), 0);
     }
+
+    @Test
+    void testMultipleNextAfterAdd(){
+        this.list.add(0);
+        this.list.next().get();
+        assertEquals(this.list.next().get(), 0);
+    }
 }
