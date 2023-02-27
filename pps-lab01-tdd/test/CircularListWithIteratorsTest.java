@@ -29,6 +29,13 @@ public class CircularListWithIteratorsTest {
     }
 
     @Test
+    void notEmptyAfterAdd(){
+        this.list.add(0);
+        assertFalse(this.list.isEmpty());
+    }
+
+
+    @Test
     void testAdd(){
 
     }
