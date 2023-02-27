@@ -93,4 +93,12 @@ public class CircularListTest {
         assertEquals(1, this.list.next().get());
     }
 
+    @Test
+    void testReset(){
+        this.list.add(0);
+        this.list.add(1);
+        this.list.next();
+        this.list.reset();
+        assertEquals(0, this.list.next().get());
+    }
 }
