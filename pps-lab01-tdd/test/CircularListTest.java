@@ -54,4 +54,10 @@ public class CircularListTest {
     void testNextWithEmptyList(){
         assertTrue(this.list.next().isEmpty());
     }
+
+    @Test
+    void testNextAfterAdd(){
+        this.list.add(0);
+        assertEquals(this.list.next().get(), 0);
+    }
 }
