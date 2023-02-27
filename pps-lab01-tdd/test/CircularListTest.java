@@ -62,10 +62,12 @@ public class CircularListTest {
     }
 
     @Test
-    void testMultipleNextAfterAdd(){
+    void testListCircularityWithNext(){
         this.list.add(0);
-        this.list.next().get();
-        assertEquals(this.list.next().get(), 0);
+        this.list.add(1);
+        assertEquals(0, this.list.next().get());
+        assertEquals(1, this.list.next().get());
+        assertEquals(0, this.list.next().get());
     }
 
     @Test
@@ -77,6 +79,18 @@ public class CircularListTest {
     void testListCircularityWithPrevious(){
         this.list.add(0);
         this.list.add(1);
-        assertEquals(this.list.previous().get(), 1);
+        assertEquals(1, this.list.previous().get());
     }
+
+    @Test
+    void testMultipleNextAndPrevious(){
+        this.list.add(0);
+        this.list.add(1);
+        this.list.add(2);
+        this.list.next();
+        assertEquals(1, this.list.next().get());
+        assertEquals(1, this.list.previous().get());
+        assertEquals(1, this.list.next().get());
+    }
+
 }

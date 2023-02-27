@@ -4,10 +4,14 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
+//0 1 2
+//next: 0
+//previous: 0
 public class CircularListImpl implements CircularList{
 
     private final List<Integer> list = new LinkedList<>();
-    private int i;
+    private int i=0;
+
     @Override
     public void add(int element) {
         list.add(element);
@@ -28,11 +32,10 @@ public class CircularListImpl implements CircularList{
         if(this.list.isEmpty()){
             return Optional.empty();
         }
-        i++;
         if(i >= list.size()){
             i = 0;
         }
-        return Optional.of(list.get(i));
+        return Optional.of(list.get(i++));
     }
 
     @Override
@@ -49,6 +52,5 @@ public class CircularListImpl implements CircularList{
 
     @Override
     public void reset() {
-
     }
 }
