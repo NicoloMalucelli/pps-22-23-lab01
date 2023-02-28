@@ -1,6 +1,4 @@
-import lab01.tdd.CircularList;
-import lab01.tdd.CircularListImpl;
-import lab01.tdd.CircularListWithIterators;
+import lab01.tdd.step2.CircularListWithIterators;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -70,5 +68,11 @@ public class CircularListWithIteratorsTest {
         assertEquals(2, iterator.next());
         assertEquals(1, iterator.next());
         assertEquals(0, iterator.next());
+    }
+
+    @Test
+    void testEmptyForwardIterator(){
+        Iterator<Integer> iterator = this.list.forwardIterator();
+        assertFalse(iterator.hasNext());
     }
 }

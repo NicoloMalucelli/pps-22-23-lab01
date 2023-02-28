@@ -1,9 +1,11 @@
-package lab01.tdd;
+package lab01.tdd.step2;
+
+import lab01.tdd.CircularList;
+import lab01.tdd.CircularListImpl;
 
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
 
 public class CircularListWithIterators{
     private final List<Integer> list = new LinkedList<>();
