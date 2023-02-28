@@ -75,4 +75,10 @@ public class CircularFilterableListTest {
         assertEquals(Optional.of(1), this.list.filteredNext(i -> i==1));
     }
 
+    @Test
+    void testFilteredNextWhenMultipleItemsMatch(){
+        simpleInserts();
+        this.list.filteredNext(i -> i%2==0);
+        assertEquals(Optional.of(2), this.list.filteredNext(i -> i%2==0));
+    }
 }

@@ -30,9 +30,31 @@ public class CircularFilterableList {
     public Optional<Integer> filteredNext(Predicate<? super Integer> predicate){
         Optional<Integer> res = this.list.subList(i, this.list.size()).stream().filter(predicate).findFirst();
         if(!res.isEmpty()){
+            this.updateIndex(res);
             return res;
         }
-        return this.list.subList(0, i).stream().filter(predicate).findFirst();
+        res = this.list.subList(0, i).stream().filter(predicate).findFirst();
+        this.updateIndex(res);
+        return res;
     }
 
+    private void updateIndex(Optional<Integer> n){
+        if(n.isEmpty()){
+            return;
+        }
+
+        for(int j = i; j < this.list.size(); j++){
+            if(this.list.get(j) == n.get()){
+                this.i = j+1;
+                return;
+            }
+        }
+
+        for(int j = 0; j < i; j++){
+            if(this.list.get(j) == n.get()){
+                this.i = j+1;
+                return;
+            }
+        }
+    }
 }
