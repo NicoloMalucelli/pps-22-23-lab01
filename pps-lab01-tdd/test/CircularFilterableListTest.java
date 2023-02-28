@@ -57,4 +57,9 @@ public class CircularFilterableListTest {
         this.list.clear();
         assertTrue(this.list.isEmpty());
     }
+
+    @Test
+    void testFilteredNextWithEmptyList(){
+        assertEquals(Optional.empty(), this.list.filteredNext(i -> i==0));
+    }
 }

@@ -1,6 +1,7 @@
 package lab01.tdd.step3;
 
 import lab01.tdd.CircularList;
+import lab01.tdd.step2.CircularListWithIterators;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -24,6 +25,14 @@ public class CircularFilterableList {
 
     public boolean isEmpty() {
         return list.isEmpty();
+    }
+
+    public Optional<Integer> filteredNext(Predicate<? super Integer> predicate){
+        Optional<Integer> res = this.list.subList(i, this.list.size()).stream().filter(predicate).findFirst();
+        if(!res.isEmpty()){
+            return res;
+        }
+        return this.list.subList(0, i).stream().filter(predicate).findFirst();
     }
 
 }
