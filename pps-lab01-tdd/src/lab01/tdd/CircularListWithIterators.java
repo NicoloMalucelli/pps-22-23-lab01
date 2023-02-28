@@ -20,11 +20,34 @@ public class CircularListWithIterators{
         return list.isEmpty();
     }
 
-    public Iterator<Integer> next() {
+    public Iterator<Integer> forwardIterator() {
+        return new CircularListIterator(this.list);
+    }
+
+    public Iterator<Integer> backwardIterator() {
         return null;
     }
 
-    public Iterator<Integer> previous() {
-        return null;
+
+    private class CircularListIterator implements Iterator<Integer>{
+        private final CircularList circularList = new CircularListImpl();
+
+        public CircularListIterator(List<Integer> list){
+            for (Integer i: list) {
+                this.circularList.add(i);
+            }
+        }
+
+
+        @Override
+        public boolean hasNext() {
+            return !circularList.isEmpty();
+        }
+
+        @Override
+        public Integer next() {
+            return circularList.next().get();
+        }
     }
+
 }
