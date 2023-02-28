@@ -41,7 +41,7 @@ public class CircularListImpl implements CircularList{
             return Optional.empty();
         }
         i--;
-        if(i <= 0){
+        if(i < 0){
             i = list.size()-1;
         }
         return Optional.of(list.get(i));

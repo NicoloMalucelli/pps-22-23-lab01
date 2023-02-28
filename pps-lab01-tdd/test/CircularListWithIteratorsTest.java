@@ -52,11 +52,23 @@ public class CircularListWithIteratorsTest {
     void testForwardIterator(){
         simpleInserts();
         Iterator<Integer> iterator = this.list.forwardIterator();
-        assertEquals(iterator.next(), 0);
-        assertEquals(iterator.next(), 1);
-        assertEquals(iterator.next(), 2);
-        assertEquals(iterator.next(), 0);
-        assertEquals(iterator.next(), 1);
-        assertEquals(iterator.next(), 2);
+        assertEquals(0, iterator.next());
+        assertEquals(1, iterator.next());
+        assertEquals(2, iterator.next());
+        assertEquals(0, iterator.next());
+        assertEquals(1, iterator.next());
+        assertEquals(2, iterator.next());
+    }
+
+    @Test
+    void testBackwardIterator(){
+        simpleInserts();
+        Iterator<Integer> iterator = this.list.backwardIterator();
+        assertEquals(2, iterator.next());
+        assertEquals(1, iterator.next());
+        assertEquals(0, iterator.next());
+        assertEquals(2, iterator.next());
+        assertEquals(1, iterator.next());
+        assertEquals(0, iterator.next());
     }
 }

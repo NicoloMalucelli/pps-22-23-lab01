@@ -21,18 +21,20 @@ public class CircularListWithIterators{
     }
 
     public Iterator<Integer> forwardIterator() {
-        return new CircularListIterator(this.list);
+        return new CircularListIterator(this.list, Direction.FORWARD);
     }
 
     public Iterator<Integer> backwardIterator() {
-        return null;
+        return new CircularListIterator(this.list, Direction.BACKWARD);
     }
 
-
+    public enum Direction {FORWARD, BACKWARD}
     private class CircularListIterator implements Iterator<Integer>{
         private final CircularList circularList = new CircularListImpl();
+        private final Direction direction;
 
-        public CircularListIterator(List<Integer> list){
+        public CircularListIterator(List<Integer> list, Direction direction){
+            this.direction = direction;
             for (Integer i: list) {
                 this.circularList.add(i);
             }
@@ -46,7 +48,11 @@ public class CircularListWithIterators{
 
         @Override
         public Integer next() {
-            return circularList.next().get();
+            if(direction == Direction.FORWARD) {
+                return circularList.next().get();
+            }else{
+                return circularList.previous().get();
+            }
         }
     }
 
