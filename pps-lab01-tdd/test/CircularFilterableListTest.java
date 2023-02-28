@@ -62,4 +62,17 @@ public class CircularFilterableListTest {
     void testFilteredNextWithEmptyList(){
         assertEquals(Optional.empty(), this.list.filteredNext(i -> i==0));
     }
+
+    @Test
+    void testFilteredNextWhenNoItemMatch(){
+        simpleInserts();
+        assertEquals(Optional.empty(), this.list.filteredNext(i -> i==4));
+    }
+
+    @Test
+    void testFilteredNextWhenItemMatch(){
+        simpleInserts();
+        assertEquals(Optional.of(1), this.list.filteredNext(i -> i==1));
+    }
+
 }
