@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class SimpleBankAccountWithAtmTest {
 
     private AccountHolder accountHolder;
-    private BankAccount bankAccount;
+    private SimpleBankAccountWithAtm bankAccount;
 
     @BeforeEach
     void beforeEach(){
@@ -17,20 +17,17 @@ public class SimpleBankAccountWithAtmTest {
         bankAccount = new SimpleBankAccountWithAtm(accountHolder, 0);
     }
 
-    @Test
-    void testInitialBalance() {
-        assertEquals(0, bankAccount.getBalance());
-    }
 
     @Test
-    void testDeposit() {
-        bankAccount.deposit(accountHolder.getId(), 100);
+    void testDepositWithATM() {
+        bankAccount.depositWithATM(accountHolder.getId(), 100);
         assertEquals(99, bankAccount.getBalance());
     }
 
-
-
-
-
-
+    @Test
+    void testWithDrawWithATM() {
+        bankAccount.deposit(accountHolder.getId(), 100);
+        bankAccount.withdrawWithATM(accountHolder.getId(), 10);
+        assertEquals(89, bankAccount.getBalance());
+    }
 }
