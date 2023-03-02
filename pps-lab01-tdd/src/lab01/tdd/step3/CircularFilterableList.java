@@ -7,6 +7,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class CircularFilterableList {
 
@@ -28,33 +31,15 @@ public class CircularFilterableList {
     }
 
     public Optional<Integer> filteredNext(Predicate<? super Integer> predicate){
-        Optional<Integer> res = this.list.subList(i, this.list.size()).stream().filter(predicate).findFirst();
+        Optional<Integer> res = Stream.concat(list.subList(i, list.size()).stream(), list.subList(0, i).stream())
+                .filter(predicate)
+                .findFirst();
         if(!res.isEmpty()){
-            this.updateIndex(res);
-            return res;
+            this.i = 1 + IntStream.concat(IntStream.range(i, list.size()), IntStream.range(0, 1))
+                    .filter(j -> list.get(j) == res.get())
+                    .findFirst()
+                    .getAsInt();
         }
-        res = this.list.subList(0, i).stream().filter(predicate).findFirst();
-        this.updateIndex(res);
         return res;
-    }
-
-    private void updateIndex(Optional<Integer> n){
-        if(n.isEmpty()){
-            return;
-        }
-
-        for(int j = i; j < this.list.size(); j++){
-            if(this.list.get(j) == n.get()){
-                this.i = j+1;
-                return;
-            }
-        }
-
-        for(int j = 0; j < i; j++){
-            if(this.list.get(j) == n.get()){
-                this.i = j+1;
-                return;
-            }
-        }
     }
 }
